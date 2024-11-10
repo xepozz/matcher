@@ -19,6 +19,15 @@ class LogicMatcher implements MatcherInterface
         return new self();
     }
 
+    public function matches(): bool
+    {
+        return array_reduce(
+            $this->matches,
+            fn (bool $carry, callable $callable) => $carry && $callable(),
+            true
+        );
+    }
+
     public function or(MatcherInterface ...$matchers): static
     {
         $new = clone $this;
