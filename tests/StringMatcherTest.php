@@ -45,4 +45,12 @@ class StringMatcherTest extends TestCase
 
         $this->assertEquals($expectedResult, $matcher->matches());
     }
+
+    public function testWithLengthMatcher(): void
+    {
+        $matcher = new StringMatcher('foo');
+
+        $this->assertTrue($matcher->withLengthMatcher(fn (int $length) => $length === 3)->matches());
+        $this->assertFalse($matcher->withLengthMatcher(fn (int $length) => $length === 0)->matches());
+    }
 }

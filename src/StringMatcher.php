@@ -34,6 +34,14 @@ class StringMatcher implements MatcherInterface
         return $this->with(fn (string $value) => strlen($value) < $int);
     }
 
+    /**
+     * @param callable(string): bool $matcher
+     */
+    public function withLengthMatcher(callable $matcher): static
+    {
+        return $this->with(fn (string $value) => $matcher(strlen($value)));
+    }
+
     public function withLengthLessThanOrEqualsTo(int $int): static
     {
         return $this->with(fn (string $value) => strlen($value) <= $int);

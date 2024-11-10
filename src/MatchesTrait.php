@@ -11,6 +11,9 @@ trait MatchesTrait
      */
     protected array $matches = [];
 
+    /**
+     * @param callable(mixed): bool $callable
+     */
     public function with(callable $callable): static
     {
         $new = clone $this;
