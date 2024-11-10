@@ -14,7 +14,9 @@ class ObjectMatcherTest extends TestCase
     public function testSimple(): void
     {
         $matcher = new ObjectMatcher(new stdClass());
+        $this->assertTrue($matcher->matches());
 
+        $matcher = ObjectMatcher::of(new stdClass());
         $this->assertTrue($matcher->matches());
     }
 
