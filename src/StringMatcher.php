@@ -21,22 +21,41 @@ class StringMatcher implements MatcherInterface
 
     public function withLengthGreaterThan(int $int): static
     {
-        return $this->with(function (string $value) use ($int) {
-            return strlen($value) > $int;
-        });
+        return $this->with(fn (string $value) => strlen($value) > $int);
+    }
+
+    public function withLengthGreaterThanOrEqualsTo(int $int): static
+    {
+        return $this->with(fn (string $value) => strlen($value) >= $int);
     }
 
     public function withLengthLessThan(int $int): static
     {
-        return $this->with(function (string $value) use ($int) {
-            return strlen($value) < $int;
-        });
+        return $this->with(fn (string $value) => strlen($value) < $int);
+    }
+
+    public function withLengthLessThanOrEqualsTo(int $int): static
+    {
+        return $this->with(fn (string $value) => strlen($value) <= $int);
     }
 
     public function withLengthEqualsTo(int $int): static
     {
-        return $this->with(function (string $value) use ($int) {
-            return strlen($value) === $int;
-        });
+        return $this->with(fn (string $value) => strlen($value) === $int);
+    }
+
+    public function withStartsWith(string|Stringable $prefix): static
+    {
+        return $this->with(fn (string $value) => str_starts_with($value, $prefix));
+    }
+
+    public function withEndsWith(string|Stringable $prefix): static
+    {
+        return $this->with(fn (string $value) => str_ends_with($value, $prefix));
+    }
+
+    public function withContains(string|Stringable $prefix): static
+    {
+        return $this->with(fn (string $value) => str_contains($value, $prefix));
     }
 }
