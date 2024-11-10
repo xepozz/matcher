@@ -1,0 +1,25 @@
+{
+    "name": "xepozz/matcher",
+    "authors": [
+        {
+            "name": "Dmitrii Derepko",
+            "email": "xepozz@list.ru"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xepozz\\Matcher\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Xepozz\\Matcher\\Tests\\": "tests/"
+        }
+    }
+}
