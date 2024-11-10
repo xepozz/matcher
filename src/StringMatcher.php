@@ -14,6 +14,11 @@ class StringMatcher implements MatcherInterface
     {
     }
 
+    public static function of(string|Stringable $value): static
+    {
+        return new self($value);
+    }
+
     public function withLengthGreaterThan(int $int): static
     {
         return $this->with(function (string $value) use ($int) {

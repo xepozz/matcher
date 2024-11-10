@@ -14,6 +14,11 @@ class LogicMatcher implements MatcherInterface
     {
     }
 
+    public static function of(): static
+    {
+        return new self();
+    }
+
     public function or(MatcherInterface ...$matchers): static
     {
         $new = clone $this;
